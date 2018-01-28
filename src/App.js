@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, HashRouter as Router } from 'react-router-dom';
 import Neighborhood from './components/Neighborhood';
 import List from './components/List';
+import './App.css';
 
 class App extends Component {
   async componentDidMount() {
@@ -17,12 +18,22 @@ class App extends Component {
   render() {
     const { neighborhoods } = this.state;
     return (
-      <div className="App">
+      <div className="container">
         <Router>
           <div>
             <Route
               path="/"
               render={() => <List neighborhoods={neighborhoods} />}
+            />
+            <Route
+              exact
+              path="/"
+              render={() => (
+                <div>
+                  <hr />
+                  <h2 className="title">Please select a neighborhood! </h2>
+                </div>
+              )}
             />
             {neighborhoods.map((neighborhood, i) => (
               <div key={i}>
