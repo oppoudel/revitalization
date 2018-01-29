@@ -22,7 +22,7 @@ const Neighborhood = ({ attributes }) => (
         }
       />
       <Box
-        title="Home Ownership Rate"
+        title="Pct. of Owner Occupied Properties"
         seventeen={attributes.pct_own_occ17.toFixed(2) + '%'}
         sixteen={attributes.pct_own_occ16.toFixed(2) + '%'}
         difference={
@@ -30,6 +30,19 @@ const Neighborhood = ({ attributes }) => (
         }
         icon={
           attributes.pct_own_occ17 - attributes.pct_own_occ16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Number of Owner Occupied Properties"
+        seventeen={attributes.Owner_Occ17}
+        sixteen={attributes.Owner_Occ16}
+        difference={attributes.Owner_Occ17 - attributes.Owner_Occ16}
+        icon={
+          attributes.Owner_Occ17 - attributes.Owner_Occ16 >= 0 ? (
             <FaArrowCircleUp color="limegreen" size="20" />
           ) : (
             <FaArrowCircleDown color="red" size="20" />
@@ -71,6 +84,19 @@ const Neighborhood = ({ attributes }) => (
         difference={attributes.Vacant_Lots17 - attributes.Vacant_Lots16}
         icon={
           attributes.Vacant_Lots17 - attributes.Vacant_Lots16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Number of Vacant Buildings"
+        seventeen={attributes.buildings_17}
+        sixteen={attributes.buildings_16}
+        difference={attributes.buildings_17 - attributes.buildings_16}
+        icon={
+          attributes.buildings_17 - attributes.buildings_16 >= 0 ? (
             <FaArrowCircleUp color="limegreen" size="20" />
           ) : (
             <FaArrowCircleDown color="red" size="20" />
@@ -223,19 +249,6 @@ const Neighborhood = ({ attributes }) => (
         }
       />
       <Box
-        title="Number of Cleaning Service Requests"
-        seventeen={attributes.SR_Cleaning_17}
-        sixteen={attributes.SR_Cleaning_16}
-        difference={attributes.SR_Cleaning_17 - attributes.SR_Cleaning_16}
-        icon={
-          attributes.SR_Cleaning_17 - attributes.SR_Cleaning_16 >= 0 ? (
-            <FaArrowCircleUp color="limegreen" size="20" />
-          ) : (
-            <FaArrowCircleDown color="red" size="20" />
-          )
-        }
-      />
-      <Box
         title="Number of Graffiti Service Requests"
         seventeen={attributes.SR_Graffiti_17}
         sixteen={attributes.SR_Graffiti_16}
@@ -307,6 +320,20 @@ const Neighborhood = ({ attributes }) => (
         difference={attributes.SR_Streetlight_17 - attributes.SR_Streetlight_16}
         icon={
           attributes.SR_Streetlight_17 - attributes.SR_Streetlight_16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <div />
+      <Box
+        title="Total Number of CFS Crimes"
+        seventeen={attributes.Crime_17}
+        sixteen={attributes.Crime_16}
+        difference={attributes.Crime_17 - attributes.Crime_16}
+        icon={
+          attributes.Crime_17 - attributes.Crime_16 >= 0 ? (
             <FaArrowCircleUp color="limegreen" size="20" />
           ) : (
             <FaArrowCircleDown color="red" size="20" />
