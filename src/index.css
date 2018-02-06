@@ -23,8 +23,8 @@ html {
 body {
   background-image: url('../src/images/topography.svg');
   background-size: 340px, auto;
-  min-height: calc(100vh - 100px);
-  margin: 50px;
+  min-height: 100vh;
+  padding: 50px;
   /* background: white; */
   background-position: fixed;
   letter-spacing: -1px;

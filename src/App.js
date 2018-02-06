@@ -7,13 +7,13 @@ import './App.css';
 class App extends Component {
   async componentDidMount() {
     const response = await (await fetch(
-      'https://maps.baltimorecity.gov/egis/rest/services/CitiStat/Revitalization/MapServer/2/query?where=1%3D1&outFields=*&returnGeometry=false&f=pjson'
+      'https://maps.baltimorecity.gov/egis/rest/services/CitiStat/Revitalization/MapServer/3/query?where=1%3D1&outFields=*&returnGeometry=false&f=pjson',
     )).json();
     console.log(response.features);
     this.setState({ neighborhoods: response.features });
   }
   state = {
-    neighborhoods: []
+    neighborhoods: [],
   };
   render() {
     const { neighborhoods } = this.state;

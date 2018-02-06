@@ -9,27 +9,14 @@ const Neighborhood = ({ attributes }) => (
     <h2 className="title">{attributes.Name}</h2>
     <div className="wrapper">
       <Box
-        title="Total Number of Properties Sold"
-        seventeen={attributes.TotalNumSold17}
-        sixteen={attributes.TotalNumSold16}
-        difference={attributes.TotalNumSold17 - attributes.TotalNumSold16}
-        icon={
-          attributes.TotalNumSold17 - attributes.TotalNumSold16 >= 0 ? (
-            <FaArrowCircleUp color="limegreen" size="20" />
-          ) : (
-            <FaArrowCircleDown color="red" size="20" />
-          )
-        }
-      />
-      <Box
-        title="Pct. of Owner Occupied Properties"
-        seventeen={attributes.pct_own_occ17.toFixed(2) + '%'}
-        sixteen={attributes.pct_own_occ16.toFixed(2) + '%'}
+        title="Median Sales Price"
+        seventeen={'$' + attributes.Median_Price_17}
+        sixteen={'$' + attributes.Median_Price_16}
         difference={
-          (attributes.pct_own_occ17 - attributes.pct_own_occ16).toFixed(2) + '%'
+          '$' + (attributes.Median_Price_17 - attributes.Median_Price_16)
         }
         icon={
-          attributes.pct_own_occ17 - attributes.pct_own_occ16 >= 0 ? (
+          attributes.Median_Price_17 - attributes.Median_Price_16 >= 0 ? (
             <FaArrowCircleUp color="limegreen" size="20" />
           ) : (
             <FaArrowCircleDown color="red" size="20" />
@@ -37,40 +24,14 @@ const Neighborhood = ({ attributes }) => (
         }
       />
       <Box
-        title="Number of Owner Occupied Properties"
-        seventeen={attributes.Owner_Occ17}
-        sixteen={attributes.Owner_Occ16}
-        difference={attributes.Owner_Occ17 - attributes.Owner_Occ16}
-        icon={
-          attributes.Owner_Occ17 - attributes.Owner_Occ16 >= 0 ? (
-            <FaArrowCircleUp color="limegreen" size="20" />
-          ) : (
-            <FaArrowCircleDown color="red" size="20" />
-          )
-        }
-      />
-      <Box
-        title="Number of Tax Deliquent Properties"
-        seventeen={attributes.TaxSales_17}
-        sixteen={attributes.TaxSales_16}
-        difference={attributes.TaxSales_17 - attributes.TaxSales_16}
-        icon={
-          attributes.TaxSales_17 - attributes.TaxSales_16 >= 0 ? (
-            <FaArrowCircleUp color="limegreen" size="20" />
-          ) : (
-            <FaArrowCircleDown color="red" size="20" />
-          )
-        }
-      />
-      <Box
-        title="Average Value of Property Sold"
-        seventeen={'$' + attributes.AvgSold17.toFixed(2)}
-        sixteen={'$' + attributes.AvgSold16.toFixed(2)}
+        title="Sales Price Variation"
+        seventeen={'$' + attributes.SalePrice_Diff_17}
+        sixteen={'$' + attributes.SalePrice_Diff_16}
         difference={
-          '$' + (attributes.AvgSold17 - attributes.AvgSold16).toFixed(2)
+          '$' + (attributes.SalePrice_Diff_17 - attributes.SalePrice_Diff_16)
         }
         icon={
-          attributes.AvgSold17 - attributes.AvgSold16 >= 0 ? (
+          attributes.SalePrice_Diff_17 - attributes.SalePrice_Diff_16 >= 0 ? (
             <FaArrowCircleUp color="limegreen" size="20" />
           ) : (
             <FaArrowCircleDown color="red" size="20" />
@@ -103,12 +64,161 @@ const Neighborhood = ({ attributes }) => (
           )
         }
       />
+      <div className="box">
+        <div className="content">
+          <p>
+            <strong>Number of Foreclosures</strong>
+          </p>
+        </div>
+        <table className="table is-bordered">
+          <tbody>
+            <tr>
+              <td>2016</td>
+              <td>2015</td>
+              <td>Difference</td>
+            </tr>
+            <tr>
+              <td>{attributes.Foreclosures_2016}</td>
+              <td>{attributes.Foreclosures_2015}</td>
+              <td>
+                {attributes.Foreclosures_2016 - attributes.Foreclosures_2015}
+                {attributes.Foreclosures_2016 - attributes.Foreclosures_2015 >=
+                0 ? (
+                  <FaArrowCircleUp color="limegreen" size="20" />
+                ) : (
+                  <FaArrowCircleDown color="red" size="20" />
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <Box
+        title="Number of Residential Permits over 10K"
+        seventeen={attributes.RPOver10k_17}
+        sixteen={attributes.RPOver10k_16}
+        difference={attributes.RPOver10k_17 - attributes.RPOver10k_16}
+        icon={
+          attributes.RPOver10k_17 - attributes.RPOver10k_16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Pct. of Owner Occupied Properties"
+        seventeen={attributes.pct_own_occ17.toFixed(0) + '%'}
+        sixteen={attributes.pct_own_occ16.toFixed(0) + '%'}
+        difference={
+          (attributes.pct_own_occ17 - attributes.pct_own_occ16).toFixed(0) + '%'
+        }
+        icon={
+          attributes.pct_own_occ17 - attributes.pct_own_occ16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Number of Housing units per square mile"
+        seventeen={attributes.Housing17SqMi.toFixed(0)}
+        sixteen={attributes.Housing16SqMi.toFixed(0)}
+        difference={(
+          attributes.Housing17SqMi - attributes.Housing16SqMi
+        ).toFixed(0)}
+        icon={
+          attributes.Housing17SqMi - attributes.Housing16SqMi >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Commercial Industrial Land Area in SqMiles"
+        seventeen={attributes.Commercial_Industrial_Area_17.toFixed(2)}
+        sixteen={attributes.Commercial_Industrial_Area_16.toFixed(2)}
+        difference={(
+          attributes.Commercial_Industrial_Area_17 -
+          attributes.Commercial_Industrial_Area_16
+        ).toFixed(2)}
+        icon={
+          attributes.Commercial_Industrial_Area_17 -
+            attributes.Commercial_Industrial_Area_16 >=
+          0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <hr />
+      <hr />
+      <hr />
+      <Box
+        title="Total Number of Properties Sold"
+        seventeen={attributes.TotalNumSold17}
+        sixteen={attributes.TotalNumSold16}
+        difference={attributes.TotalNumSold17 - attributes.TotalNumSold16}
+        icon={
+          attributes.TotalNumSold17 - attributes.TotalNumSold16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+
+      <Box
+        title="Number of Owner Occupied Properties"
+        seventeen={attributes.Owner_Occ17}
+        sixteen={attributes.Owner_Occ16}
+        difference={attributes.Owner_Occ17 - attributes.Owner_Occ16}
+        icon={
+          attributes.Owner_Occ17 - attributes.Owner_Occ16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Number of Tax Deliquent Properties"
+        seventeen={attributes.TaxSales_17}
+        sixteen={attributes.TaxSales_16}
+        difference={attributes.TaxSales_17 - attributes.TaxSales_16}
+        icon={
+          attributes.TaxSales_17 - attributes.TaxSales_16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Average Value of Property Sold"
+        seventeen={'$' + attributes.AvgSold17.toFixed(0)}
+        sixteen={'$' + attributes.AvgSold16.toFixed(0)}
+        difference={
+          '$' + (attributes.AvgSold17 - attributes.AvgSold16).toFixed(0)
+        }
+        icon={
+          attributes.AvgSold17 - attributes.AvgSold16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+
       <Box
         title="Average Cost per Square Feet"
-        seventeen={'$' + attributes.Cost_SqFt17.toFixed(2)}
-        sixteen={'$' + attributes.Cost_SqFt16.toFixed(2)}
+        seventeen={'$' + attributes.Cost_SqFt17.toFixed(0)}
+        sixteen={'$' + attributes.Cost_SqFt16.toFixed(0)}
         difference={
-          '$' + (attributes.Cost_SqFt17 - attributes.Cost_SqFt16).toFixed(2)
+          '$' + (attributes.Cost_SqFt17 - attributes.Cost_SqFt16).toFixed(0)
         }
         icon={
           attributes.Cost_SqFt17 - attributes.Cost_SqFt16 >= 0 ? (
@@ -326,7 +436,6 @@ const Neighborhood = ({ attributes }) => (
           )
         }
       />
-      <div />
       <Box
         title="Total Number of CFS Crimes"
         seventeen={attributes.Crime_17}
@@ -334,6 +443,117 @@ const Neighborhood = ({ attributes }) => (
         difference={attributes.Crime_17 - attributes.Crime_16}
         icon={
           attributes.Crime_17 - attributes.Crime_16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Crime: Aggravated Assault"
+        seventeen={attributes.Agg_Assault_17}
+        sixteen={attributes.Agg_Assault_16}
+        difference={attributes.Agg_Assault_17 - attributes.Agg_Assault_16}
+        icon={
+          attributes.Agg_Assault_17 - attributes.Agg_Assault_16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Crime: Burglary"
+        seventeen={attributes.Burglary_17}
+        sixteen={attributes.Burglary_16}
+        difference={attributes.Burglary_17 - attributes.Burglary_16}
+        icon={
+          attributes.Burglary_17 - attributes.Burglary_16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Crime: Homicide"
+        seventeen={attributes.Homicide_17}
+        sixteen={attributes.Homicide_16}
+        difference={attributes.Homicide_17 - attributes.Homicide_16}
+        icon={
+          attributes.Homicide_17 - attributes.Homicide_16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Crime: Carjacking"
+        seventeen={attributes.Carjacking_17}
+        sixteen={attributes.Carjacking_16}
+        difference={attributes.Carjacking_17 - attributes.Carjacking_16}
+        icon={
+          attributes.Carjacking_17 - attributes.Carjacking_16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Crime: Commercial Robbery"
+        seventeen={attributes.Commercial_Robbery_17}
+        sixteen={attributes.Commercial_Robbery_16}
+        difference={
+          attributes.Commercial_Robbery_17 - attributes.Commercial_Robbery_16
+        }
+        icon={
+          attributes.Commercial_Robbery_17 - attributes.Commercial_Robbery_16 >=
+          0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Crime: Residential Robbery"
+        seventeen={attributes.Residential_Robbery_17}
+        sixteen={attributes.Residential_Robbery_16}
+        difference={
+          attributes.Residential_Robbery_17 - attributes.Residential_Robbery_16
+        }
+        icon={
+          attributes.Residential_Robbery_17 -
+            attributes.Residential_Robbery_16 >=
+          0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Crime: Street Robbery"
+        seventeen={attributes.Street_Robbery_17}
+        sixteen={attributes.Street_Robbery_16}
+        difference={attributes.Street_Robbery_17 - attributes.Street_Robbery_16}
+        icon={
+          attributes.Street_Robbery_17 - attributes.Street_Robbery_16 >= 0 ? (
+            <FaArrowCircleUp color="limegreen" size="20" />
+          ) : (
+            <FaArrowCircleDown color="red" size="20" />
+          )
+        }
+      />
+      <Box
+        title="Crime: Shooting"
+        seventeen={attributes.Shooting_17}
+        sixteen={attributes.Shooting_16}
+        difference={attributes.Shooting_17 - attributes.Shooting_16}
+        icon={
+          attributes.Shooting_17 - attributes.Shooting_16 >= 0 ? (
             <FaArrowCircleUp color="limegreen" size="20" />
           ) : (
             <FaArrowCircleDown color="red" size="20" />
